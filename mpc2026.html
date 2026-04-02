@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPC 2026: Beyond the Horizon | Al-Khairy Foundation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="mpc-page">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-loader">
+                <i class="fas fa-mosque" style="color: var(--mpc-lime);"></i>
+                <span style="color: var(--mpc-lime);">Al-Khairy Foundation</span>
+            </div>
+            <div class="loader" style="border-top-color: var(--mpc-lime);"></div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" style="background-color: var(--mpc-lime);">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon">
+                        <i class="fas fa-mosque" style="color: var(--mpc-lime);"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Al-Khairy Foundation</h1>
+                        <span style="color: var(--mpc-lime-dark);">Building Africa's Muslim Leaders</span>
+                    </div>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="main-nav" id="mainNav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="programs.html" class="nav-link">Programs</a></li>
+                    <li class="nav-item"><a href="mpc2026.html" class="nav-link active">MPC 2026</a></li>
+                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="donate.html" class="nav-link donate-btn" style="background-color: var(--mpc-lime); color: white;">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MPC Hero Section -->
+    <section class="mpc-hero">
+        <div class="mpc-pattern-bg"></div>
+        <div class="container">
+            <div class="mpc-hero-content animate-on-scroll">
+                <span class="mpc-hero-tagline">The Annual Mentorship & Parents Conference</span>
+                <h1 class="mpc-hero-title">BEYOND THE HORIZON</h1>
+                <p class="mpc-hero-subtitle">Nurturing the Next Generation of Leaders</p>
+                <div class="mpc-hero-details">
+                    <span><i class="fas fa-calendar-alt"></i> May 1 & 3, 2026</span>
+                    <span><i class="fas fa-map-marker-alt"></i> Mokola, Ibadan</span>
+                </div>
+                <div class="hero-btns">
+                    <a href="#register" class="btn btn-mpc-primary btn-animated">Register Now</a>
+                    <a href="#schedule" class="btn btn-mpc-outline">View Schedule</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text animate-on-scroll">
+                    <h2 class="mpc-section-title">Nurturing Excellence</h2>
+                    <p>MPC 2026 is a cornerstone event of the Alkhairy Foundation, designed to bridge the gap between today's challenges and tomorrow's leadership. Set against the theme "Beyond the Horizon," this conference focuses on the holistic development of Muslim youth and the critical role of parental guidance.</p>
+                    <p>Our mission is to empower the next generation with the ethical foundation, academic rigor, and leadership skills necessary to navigate a complex world while remaining firmly rooted in their faith.</p>
+                    <div class="highlight-box" style="background: var(--mpc-yellow-light); border-left-color: var(--mpc-lime);">
+                        <p><strong>Conference Goals:</strong> To inspire vision, build character, and foster a supportive community of learners and mentors.</p>
+                    </div>
+                </div>
+                <div class="about-image animate-on-scroll" data-delay="0.2">
+                    <div class="image-frame" style="border: 5px solid var(--mpc-lime);">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f8f4be?auto=format&fit=crop&w=1200&q=80" alt="Leadership Summit" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="section-padding bg-light">
+        <div class="container">
+            <div class="mpc-section-header animate-on-scroll">
+                <h2 class="mpc-section-title">Conference Schedule</h2>
+                <p class="section-subtitle">Two days of inspiration, learning, and growth.</p>
+            </div>
+
+            <div class="mpc-schedule-grid">
+                <!-- Day 1 -->
+                <div class="schedule-day animate-on-scroll">
+                    <h3>Day 1: Youth Power Day</h3>
+                    <p class="event-meta">Friday, May 1, 2026 | Focus: Leadership & Skills</p>
+                    <div class="schedule-items">
+                        <div class="schedule-item">
+                            <span class="item-time">09:00 AM</span>
+                            <div class="item-info">
+                                <h4>Registration & Networking</h4>
+                                <p>Arrival and meet-and-greet session.</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="item-time">10:30 AM</span>
+                            <div class="item-info">
+                                <h4>Beyond the Horizon Keynote</h4>
+                                <p>Inspiring the youth to look further.</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="item-time">12:30 PM</span>
+                            <div class="item-info">
+                                <h4>Leadership Workshops</h4>
+                                <p>Practical skills for the ethical leader.</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="item-time">04:00 PM</span>
+                            <div class="item-info">
+                                <h4>Mentorship Circles</h4>
+                                <p>One-on-one sessions with industry leaders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="schedule-day animate-on-scroll" data-delay="0.2">
+                    <h3>Day 2: Parents Conference</h3>
+                    <p class="event-meta">Sunday, May 3, 2026 | Focus: Guidance & Support</p>
+                    <div class="schedule-items">
+                        <div class="schedule-item">
+                            <span class="item-time">09:30 AM</span>
+                            <div class="item-info">
+                                <h4>The Guardian's Role</h4>
+                                <p>Nurturing faith and character at home.</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="item-time">11:30 AM</span>
+                            <div class="item-info">
+                                <h4>Academic Success Strategies</h4>
+                                <p>Supporting your child's educational journey.</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="item-time">02:00 PM</span>
+                            <div class="item-info">
+                                <h4>Open Forum: Youth Challenges</h4>
+                                <p>Interactive dialogue on modern obstacles.</p>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="item-time">04:30 PM</span>
+                            <div class="item-info">
+                                <h4>Grand Closing Ceremony</h4>
+                                <p>Awards, vision sharing, and dua.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="mpc-venue-box animate-on-scroll">
+                <div class="mpc-pattern-bg"></div>
+                <h2 class="mpc-section-title" style="color: var(--mpc-yellow);">The Venue</h2>
+                <p style="font-size: 1.5rem; margin-bottom: 10px;">Oba Akinbiyi Model School Hall</p>
+                <p style="opacity: 0.8; margin-bottom: 30px;">Mokola, Ibadan, Oyo State, Nigeria</p>
+                <div class="venue-features" style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                    <span><i class="fas fa-parking"></i> Ample Parking</span>
+                    <span><i class="fas fa-snowflake"></i> Fully Air-conditioned</span>
+                    <span><i class="fas fa-shield-alt"></i> Secure Environment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="section-padding bg-light">
+        <div class="container">
+            <div class="mpc-section-header animate-on-scroll">
+                <h2 class="mpc-section-title">Registration</h2>
+                <p class="section-subtitle">Admission is <strong>invitation-only</strong>. Please register below to receive your unique entry code.</p>
+            </div>
+
+            <div class="registration-form-container animate-on-scroll">
+                <form id="mpcRegistrationForm" action="https://formsubmit.co/ajax/foundationalkhairy@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regFirstName">First Name *</label>
+                            <input type="text" id="regFirstName" name="first_name" class="form-control" required placeholder="Enter first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="regLastName">Last Name *</label>
+                            <input type="text" id="regLastName" name="last_name" class="form-control" required placeholder="Enter last name">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="regEmail">Email Address *</label>
+                        <input type="email" id="regEmail" name="email" class="form-control" required placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="regPhone">Phone Number *</label>
+                        <input type="tel" id="regPhone" name="phone" class="form-control" required placeholder="Enter phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="regCategory">I am registering as: *</label>
+                        <select id="regCategory" name="category" class="form-control" required>
+                            <option value="">Select Category</option>
+                            <option value="Youth (13-25)">Youth (13-25)</option>
+                            <option value="Parent/Guardian">Parent/Guardian</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regExpectations">What are your expectations for MPC 2026?</label>
+                        <textarea id="regExpectations" name="expectations" class="form-control" rows="3" placeholder="Tell us what you hope to learn..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-mpc-primary btn-submit-reg">Submit Registration</button>
+                    
+                    <!-- Hidden field for unique code (will be generated) -->
+                    <input type="hidden" id="entryCodeHidden" name="entry_code">
+                    <input type="hidden" name="_next" value="https://alkhairyfoundation.org/mpc2026.html?status=success">
+                    <input type="hidden" name="_subject" value="New MPC 2026 Registration">
+                </form>
+
+                <div id="entryCodeBox" class="animate-on-scroll">
+                    <div class="ticket-header">
+                        <i class="fas fa-ticket-alt"></i>
+                        <h4>Registration Successful!</h4>
+                    </div>
+                    <p>Your unique entry code is:</p>
+                    <div class="code-display-wrapper">
+                        <span class="code-value" id="generatedCode">MPC-82736</span>
+                        <button id="copyCodeBtn" class="btn btn-sm btn-mpc-outline" style="color: var(--primary-green); border-color: var(--mpc-lime); margin-bottom: 10px;">
+                            <i class="fas fa-copy"></i> Copy Code
+                        </button>
+                    </div>
+                    
+                    <div id="submissionStatusTip" style="margin-top: 15px; font-size: 0.85rem; padding: 12px; border-radius: 8px; background: rgba(164, 208, 65, 0.08); border: 1px solid rgba(164, 208, 65, 0.2); display: none; color: var(--primary-green-dark); text-align: left;"></div>
+
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 20px;">Please present this code at the entrance. Your digital pass has been automatically downloaded.</p>
+                    <div class="ticket-actions" style="margin-top: 25px; display: flex; gap: 15px; justify-content: center;">
+                        <a href="mpc2026.html" class="btn btn-mpc-primary" style="text-decoration: none;">
+                            <i class="fas fa-user-plus"></i> Register Another
+                        </a>
+                        <a href="index.html" class="btn btn-outline" style="border-color: var(--mpc-lime); color: var(--mpc-lime); text-decoration: none;">
+                            <i class="fas fa-home"></i> Back to Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="mpc-section-header animate-on-scroll">
+                <h2 class="mpc-section-title">Support & Inquiries</h2>
+                <p class="section-subtitle">Have questions? We're here to help.</p>
+            </div>
+            
+            <div class="contact-info" style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
+                <div class="contact-item">
+                    <i class="fas fa-envelope" style="color: var(--mpc-lime); font-size: 2rem;"></i>
+                    <p style="font-weight: 700; margin-top: 10px;">Email Us</p>
+                    <p>foundationalkhairy@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt" style="color: var(--mpc-lime); font-size: 2rem;"></i>
+                    <p style="font-weight: 700; margin-top: 10px;">Call Support</p>
+                    <p>+234 802 353 2870</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-headset" style="color: var(--mpc-lime); font-size: 2rem;"></i>
+                    <p style="font-weight: 700; margin-top: 10px;">Technical Issues</p>
+                    <p>Webmaster Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <a href="index.html" class="logo-link">
+                            <i class="fas fa-mosque" style="color: var(--mpc-lime);"></i>
+                            <div>
+                                <h3 style="color: white;">Al-Khairy Foundation</h3>
+                                <span style="color: var(--mpc-lime);">Building Africa's Muslim Leaders</span>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="footer-text">Powered by Alkhairy Foundation. Dedicated to nurturing the next generation of ethical leaders.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="mpc2026.html">MPC 2026</a></li>
+                        <li><a href="events.html">Other Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Powered By</h4>
+                    <p class="footer-text">Alkhairy Foundation</p>
+                    <div class="arabic-text">
+                        <p style="color: var(--mpc-lime);">بارك الله فيكم</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Al-Khairy Foundation. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden Entry Pass Template for PNG Generation -->
+    <div id="mpcEntryPassContainer" style="position: absolute; left: -9999px; top: -9999px;">
+        <div class="mpc-id-card">
+            <div class="card-bg-pattern"></div>
+            <div class="card-header">
+                <div class="card-header-main">
+                    <i class="fas fa-mosque card-logo"></i>
+                    <h2>Al-Khairy Foundation</h2>
+                </div>
+                <div class="card-attending-text">I AM ATTENDING</div>
+                <div class="card-event-name">MPC 2026: BEYOND THE HORIZON</div>
+            </div>
+            <div class="card-body">
+                <div class="card-user-info">
+                    <div class="info-label">CANDIDATE NAME</div>
+                    <div class="info-value" id="cardNameDisplay">JOHN DOE</div>
+                </div>
+                <div class="card-meta">
+                    <div class="card-user-info">
+                        <div class="info-label">CATEGORY</div>
+                        <div class="info-value" id="cardCategoryDisplay">YOUTH</div>
+                    </div>
+                    <div class="card-user-info">
+                        <div class="info-label">STATUS</div>
+                        <div class="info-value" style="color: #4CAF50;">CONFIRMED <i class="fas fa-check-circle"></i></div>
+                    </div>
+                </div>
+                <div class="card-entry-code">
+                    <div class="info-label">UNIQUE ENTRY CODE</div>
+                    <div class="code-value-id" id="cardCodeDisplay">MPC-XXXXX</div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="footer-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>May 1 & 3, 2026</span>
+                </div>
+                <div class="footer-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Mokola, Ibadan</span>
+                </div>
+                <div class="pass-note">Please present this pass at the entrance.</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Specific scroll logic for the new mpc page
+        window.addEventListener('load', () => {
+            const mpcHero = document.querySelector('.mpc-hero');
+            if (mpcHero) {
+                mpcHero.classList.add('visible');
+            }
+        });
+    </script>
+</body>
+</html>
