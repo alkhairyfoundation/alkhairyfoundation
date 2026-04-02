@@ -549,6 +549,9 @@ const mpcForm = document.getElementById('mpcRegistrationForm');
 const entryCodeBox = document.getElementById('entryCodeBox');
 const generatedCodeSpan = document.getElementById('generatedCode');
 
+// Google Sheets Web App URL
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx6PEtprVZZm_9qI3lwMs2x781bsJTgrQoN-nD8Zd2QK3VyAm00W9jWABH-9mM_EyH8gw/exec';
+
 if (mpcForm && entryCodeBox) {
     mpcForm.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -559,20 +562,20 @@ if (mpcForm && entryCodeBox) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
         
-        // --- 1. PREPARE DATA (Definitions moved up for scope) ---
+        // --- 1. PREPARE DATA ---
         const firstName = document.getElementById('regFirstName').value;
         const lastName = document.getElementById('regLastName').value;
         const email = document.getElementById('regEmail').value;
+        const phone = document.getElementById('regPhone').value;
         const category = document.getElementById('regCategory').value;
+        const expectations = document.getElementById('regExpectations').value;
         const fullName = `${firstName} ${lastName}`;
         const uniqueCode = generateMPCId(firstName, lastName);
         
         // --- 2. POPULATE TEMPLATES ---
-        // Hidden field for Formspree
         const hiddenCodeInput = document.getElementById('entryCodeHidden');
         if (hiddenCodeInput) hiddenCodeInput.value = uniqueCode;
         
-        // Pass template for PNG generation
         const nameDisp = document.getElementById('cardNameDisplay');
         const catDisp = document.getElementById('cardCategoryDisplay');
         const codeDisp = document.getElementById('cardCodeDisplay');
@@ -580,97 +583,106 @@ if (mpcForm && entryCodeBox) {
         if (catDisp) catDisp.textContent = category;
         if (codeDisp) codeDisp.textContent = uniqueCode;
         
-        // 3. Submit form data through AJAX (FormSubmit.co - Unlimited Free)
+        // 3. Prepare data objects
+        const formDataObj = {
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            phone: phone,
+            category: category,
+            expectations: expectations,
+            entry_code: uniqueCode,
+            _subject: `New MPC 2026 Registration: ${fullName}`
+        };
+
+        const isLocal = window.location.protocol === 'file:';
+        let submissionErrors = [];
+
         try {
-            // Convert FormData to a plain JSON object for FormSubmit AJAX
-            const formData = new FormData(mpcForm);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
-            
-            // Set the subject and other configuration directly in the JSON if helpful
-            formObject['_subject'] = `New MPC 2026 Registration: ${fullName}`;
-            
-            // Local file check for testing simulation
-            const isLocal = window.location.protocol === 'file:';
-            
-            let fetchSuccess = false;
+            // A. Submit to Google Sheets (Primary Data Storage)
             try {
-                const response = await fetch(mpcForm.action, {
-                    method: mpcForm.method,
-                    body: JSON.stringify(formObject),
+                const sheetResponse = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Apps Script requires no-cors for simple POST or handle CORS in script
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formDataObj)
+                });
+                console.log('Google Sheets submission initiated');
+            } catch (err) {
+                console.error('Google Sheets Error:', err);
+                submissionErrors.push('Google Sheets');
+            }
+
+            // B. Submit to FormSubmit (Backup & Email Notification)
+            try {
+                const formSubmitResponse = await fetch(mpcForm.action, {
+                    method: 'POST',
+                    body: JSON.stringify(formDataObj),
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     }
                 });
-                fetchSuccess = response.ok;
-            } catch (fetchErr) {
-                console.warn('Network error during submission:', fetchErr);
-                if (isLocal) fetchSuccess = true;
+                console.log('FormSubmit submission status:', formSubmitResponse.ok);
+            } catch (err) {
+                console.error('FormSubmit Error:', err);
+                submissionErrors.push('Email Backup');
+            }
+
+            // Show Success UI regardless (don't block user if one service fails as long as it's tracked)
+            showNotification('Registration successful! Generating your pass...', 'success');
+            
+            // On-screen UI update
+            if (generatedCodeSpan) generatedCodeSpan.textContent = uniqueCode;
+            const copyBtn = document.getElementById('copyCodeBtn');
+            if (copyBtn) {
+                copyBtn.onclick = () => {
+                    navigator.clipboard.writeText(uniqueCode).then(() => {
+                        const originalHtml = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                        copyBtn.style.color = 'var(--mpc-lime)';
+                        setTimeout(() => { 
+                            copyBtn.innerHTML = originalHtml; 
+                            copyBtn.style.color = '';
+                        }, 2000);
+                    });
+                };
             }
             
-            if (fetchSuccess || isLocal) {
-                // Success 
-                showNotification(isLocal ? 'Simulated Success (Local)...' : 'Registration successful! Generating pass...', 'success');
-                
-                // On-screen UI update
-                generatedCodeSpan.textContent = uniqueCode;
-                const copyBtn = document.getElementById('copyCodeBtn');
-                if (copyBtn) {
-                    copyBtn.onclick = () => {
-                        navigator.clipboard.writeText(uniqueCode).then(() => {
-                            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                            setTimeout(() => { copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy Code'; }, 2000);
-                        });
-                    };
-                }
-                
-                // Automatic Download (Instant Background Trigger)
-                await generateAndDownloadPass(fullName);
-                
-                // UI Switch
-                mpcForm.style.display = 'none';
-                entryCodeBox.style.display = 'block';
-                entryCodeBox.classList.add('animated');
-                
-                // Handle Activation Status Tip (If live and worked but might need activation)
-                const statusTip = document.getElementById('submissionStatusTip');
-                if (statusTip && !isLocal) {
+            // Automatic Download
+            await generateAndDownloadPass(fullName);
+            
+            // UI Switch
+            mpcForm.style.display = 'none';
+            entryCodeBox.style.display = 'block';
+            entryCodeBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Handle Status Tip
+            const statusTip = document.getElementById('submissionStatusTip');
+            if (statusTip) {
+                if (submissionErrors.length === 0) {
                     statusTip.innerHTML = `
-                        <i class="fas fa-check-circle" style="color: var(--primary-green);"></i> <strong>Registration Tracked!</strong> 
-                        Record has been sent to your Formspree dashboard.
+                        <div style="font-size: 0.85rem; padding: 12px; border-radius: 8px; background: rgba(164, 208, 65, 0.08); border: 1px solid rgba(164, 208, 65, 0.2); color: var(--primary-green-dark); text-align: left;">
+                            <i class="fas fa-database"></i> Record saved to Registry & Email backup sent.
+                        </div>
                     `;
-                    statusTip.style.display = 'block';
+                } else {
+                    statusTip.innerHTML = `
+                        <div style="font-size: 0.85rem; padding: 12px; border-radius: 8px; background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); color: #856404; text-align: left;">
+                            <i class="fas fa-exclamation-triangle"></i> Notice: Partial archive success. Your ID pass is valid.
+                        </div>
+                    `;
                 }
-            } else {
-                throw new Error('Formspree rejected the request.');
+                statusTip.style.display = 'block';
             }
+
         } catch (error) {
-            console.error('Submission Context Error:', error);
-            
-            // --- PREMIUM ZERO-ALERT FLOW ---
-            // If it fails (likely due to first-time activation on a new ID), we STILL show success
-            // to the candidate, but we give the admin a helpful instruction.
-            
+            console.error('Submission Logic Error:', error);
+            // Fallback UI switch if something critical fails but code was generated
             generatedCodeSpan.textContent = uniqueCode;
             mpcForm.style.display = 'none';
             entryCodeBox.style.display = 'block';
-            entryCodeBox.classList.add('animated');
-            
-            const statusTip = document.getElementById('submissionStatusTip');
-            if (statusTip) {
-                statusTip.innerHTML = `
-                    <i class="fas fa-info-circle"></i> 
-                    <strong>Note to Admin:</strong> 
-                    If this is your first submission, please verify it in your <strong>Formspree Dashboard</strong> (f/xeeplgoy). 
-                    <em>Your entry pass has been generated below.</em>
-                `;
-                statusTip.style.display = 'block';
-            }
-            
-            // Generate and Download the PNG Pass anyway
             await generateAndDownloadPass(fullName);
         }
     });

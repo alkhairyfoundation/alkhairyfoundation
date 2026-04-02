@@ -263,28 +263,39 @@
                 </form>
 
                 <div id="entryCodeBox" class="animate-on-scroll">
-                    <div class="ticket-header">
-                        <i class="fas fa-ticket-alt"></i>
-                        <h4>Registration Successful!</h4>
+                    <div class="ticket-header" style="background: var(--mpc-lime); color: white; border-radius: 12px 12px 0 0; padding: 25px;">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <h3 style="margin: 0; font-size: 1.8rem;">Registration Successful!</h3>
+                        <p style="margin-top: 10px; opacity: 0.9;">Your seat for MPC 2026 is confirmed.</p>
                     </div>
-                    <p>Your unique entry code is:</p>
-                    <div class="code-display-wrapper">
-                        <span class="code-value" id="generatedCode">MPC-82736</span>
-                        <button id="copyCodeBtn" class="btn btn-sm btn-mpc-outline" style="color: var(--primary-green); border-color: var(--mpc-lime); margin-bottom: 10px;">
-                            <i class="fas fa-copy"></i> Copy Code
-                        </button>
-                    </div>
-                    
-                    <div id="submissionStatusTip" style="margin-top: 15px; font-size: 0.85rem; padding: 12px; border-radius: 8px; background: rgba(164, 208, 65, 0.08); border: 1px solid rgba(164, 208, 65, 0.2); display: none; color: var(--primary-green-dark); text-align: left;"></div>
 
-                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 20px;">Please present this code at the entrance. Your digital pass has been automatically downloaded.</p>
-                    <div class="ticket-actions" style="margin-top: 25px; display: flex; gap: 15px; justify-content: center;">
-                        <a href="mpc2026.html" class="btn btn-mpc-primary" style="text-decoration: none;">
-                            <i class="fas fa-user-plus"></i> Register Another
-                        </a>
-                        <a href="index.html" class="btn btn-outline" style="border-color: var(--mpc-lime); color: var(--mpc-lime); text-decoration: none;">
-                            <i class="fas fa-home"></i> Back to Home
-                        </a>
+                    <div class="success-guide" style="padding: 30px; background: white; border-radius: 0 0 12px 12px; border: 1px solid #eee; border-top: none;">
+                        <div class="download-notice" style="background: rgba(164, 208, 65, 0.1); border: 1px dashed var(--mpc-lime); padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+                            <i class="fas fa-file-download" style="color: var(--mpc-lime); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <h4 style="color: var(--primary-green-dark); margin-bottom: 8px;">Entry Pass Downloaded</h4>
+                            <p style="font-size: 0.95rem; color: #555; line-height: 1.5;">Your digital entry pass has been saved to your device's <strong>Downloads</strong> folder. Please locate it and present it at the event entry.</p>
+                        </div>
+
+                        <div class="optional-code" style="margin-top: 20px;">
+                            <p style="font-size: 0.85rem; color: #888;">Unique Entry Code (Optional Backup):</p>
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 5px;">
+                                <span id="generatedCode" style="font-family: monospace; font-weight: 700; color: #333; font-size: 1.1rem; letter-spacing: 1px;">MPC-XXXXX</span>
+                                <button id="copyCodeBtn" class="btn-copy-small" title="Copy Code">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="submissionStatusTip" style="margin-top: 20px; display: none;"></div>
+
+                        <div class="ticket-actions" style="margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                            <a href="mpc2026.html" class="btn btn-mpc-primary" style="text-decoration: none; padding: 12px 25px;">
+                                <i class="fas fa-user-plus"></i> Register Another
+                            </a>
+                            <a href="index.html" class="btn btn-outline" style="border-color: var(--mpc-lime); color: var(--mpc-lime); text-decoration: none; padding: 12px 25px;">
+                                <i class="fas fa-home"></i> Back to Home
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

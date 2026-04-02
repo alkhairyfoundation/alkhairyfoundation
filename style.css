@@ -1983,3 +1983,45 @@ select.form-control {
         flex-direction: column;
     }
 }
+
+
+/* MPC Success UI Refinements */
+#entryCodeBox {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-copy-small {
+    background: rgba(164, 208, 65, 0.1);
+    border: 1px solid var(--mpc-lime);
+    color: var(--mpc-lime);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.btn-copy-small:hover {
+    background: var(--mpc-lime);
+    color: white;
+}
+
+.download-notice i {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+.success-guide h4 {
+    color: var(--primary-green-dark);
+    font-weight: 700;
+}
